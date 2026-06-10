@@ -14,10 +14,23 @@ cart.forEach ((cartItem) => {
   //let matchingItem;
   products.forEach((product) => {
     if (cartItem.productId===product.id) {
+
+    let deliveryOption;
+
+    deliveryOptions.forEach((option)=> {
+      if (option.id===cartItem.deliveryOptionId) {
+        deliveryOption = option;
+      }
+    });
+
+    const today = dayjs();
+    const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+    const dateString = deliveryDate.format('dddd, MMMM D');
+
     checkOutHTML +=
       `<div class="cart-item-container js-cart-item-container-${product.id}">
         <div class="delivery-date">
-          Delivery date: Tuesday, June 21
+          Delivery date: ${dateString}
         </div>
 
         <div class="cart-item-details-grid">

@@ -33,6 +33,17 @@ export function addToCart (productId) {
   saveToStorage();
 }
 
+export function updateDeliveryOption (productId, deliveryOptionId) {
+
+  cart.forEach((cartItem)=>{
+    if (productId === cartItem.productId) {
+      cartItem.deliveryOptionId = deliveryOptionId; 
+    }
+  });
+
+  saveToStorage();
+}
+
 export function removeFromCart (productId) {
   const newCart = [];
 

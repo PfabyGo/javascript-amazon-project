@@ -1,3 +1,3 @@
 export function formatCurrency (money) {
-  return `$${(money/100).toFixed(3)}`;
+  return `$${(Math.round(money)/100).toFixed(3)}`;
 }
